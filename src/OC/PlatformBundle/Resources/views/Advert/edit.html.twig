@@ -1,0 +1,48 @@
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="/css/article.css">{% endblock %}
+
+{% block title %}Modifier une annonce - {{ parent() }}{% endblock %}
+
+{% block headerTitle %}Modifier l'annonce :{% endblock %}
+{% block headerSubtitle %}{{ advert.title }}{% endblock %}
+
+{% block breadcrumbLien %}
+  {{ parent() }}
+  <li class="{% if app.request.attributes.get('_route') == 'oc_platform_view' %}is-active{% endif %}">
+    <a href="{{ path('oc_platform_view',{'id': advert.id}) }}">{{ advert.title }}</a>
+  </li>
+  <li class="is-active">
+    <a href="{{ path('oc_platform_view',{'id': advert.id}) }}">Modifier</a>
+  </li>
+{% endblock %}
+
+
+{% block ocplatform_body %}
+
+  <section class="article">
+    <section class="hero is-danger is-bold is-small promo-block">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            <i class="fa fa-bell-o"></i> 
+            Modifier une annonce
+          </h1>
+          <h2 class="subtitle">
+            Vous éditez une annonce déjà existante, merci de ne pas changer l'esprit général de l'annonce déjà publiée.
+          </h2>
+        </div>
+      </div>
+    </section>
+    {{ include("OCPlatformBundle:Components:form.html.twig") }}
+    <section class="article">
+      <p>
+        <a href="{{ path('oc_platform_view', {'id': advert.id}) }}" class="button is-primary title is-4">
+          <span class="icon"><i class="fa fa-chevron-left"></i></span>
+          <span>Retour à l'annonce</span>
+        </a>
+      </p>
+    </section>
+  </section>
+  
+{% endblock %}

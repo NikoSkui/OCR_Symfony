@@ -1,0 +1,54 @@
+{% extends "OCCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Annonces - {{ parent() }}
+{% endblock %}
+
+{# Breadcrumb #}
+{% block breadcrumb %}
+  <div class="box cta">
+    <div class="container">
+      <nav class="breadcrumb is-small " aria-label="breadcrumbs">
+        <ul>
+          {% block breadcrumbLien %}        
+          <li><a href="{{ path('oc_core_home') }}">Accueil</a></li>
+          <li class="{% if app.request.attributes.get('_route') == 'oc_platform_home' %}is-active{% endif %}">
+            <a href="{{ path('oc_platform_home') }}">Annonces</a>
+          </li>
+          {% endblock %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+
+{% block body %}
+
+      <div class="columns">
+        <aside class="menu column is-one-quarter">
+          <p class="menu-label">Les annonces</p>
+          <ul class="menu-list">
+            <li>
+              <a class="{% if app.request.attributes.get('_route') == 'oc_platform_home' %}is-active{% endif %}"  
+                 href="{{ path('oc_platform_home') }}">Toute les annonces
+              </a>
+            </li>
+            <li>
+              <a class="{% if app.request.attributes.get('_route') == 'oc_platform_add' %}is-active{% endif %}"  
+                 href="{{ path('oc_platform_add') }}">Ajouter une annonce
+              </a>
+            </li>
+          </ul>
+          <p class="menu-label">Dernières annonces</p>
+          {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}
+        </aside>
+        <div class="column">
+          {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+          {# <h2 class="title">Annonces</h2> #}
+          {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+          {% block ocplatform_body %}
+          {% endblock %}
+        </div>
+      </div>
+
+  {% endblock %}

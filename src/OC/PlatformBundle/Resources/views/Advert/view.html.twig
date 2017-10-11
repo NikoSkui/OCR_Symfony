@@ -1,0 +1,28 @@
+{# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="/css/article.css">{% endblock %}
+{% block title %} {{ advert.title }} - {{ parent() }}{% endblock %}
+{% block headerTitle %}{{ advert.title }}{% endblock %}
+{% block headerSubtitle %}Et pourquoi pas vous ?{% endblock %}
+{% block headerCallToAction %}
+  <p>
+    <a class="button is-primary" href="#">
+      <span>Postulez !</span>
+    </a>
+  </p>
+{% endblock %}
+
+{% block breadcrumbLien %}
+  {{ parent() }}
+  <li class="{% if app.request.attributes.get('_route') == 'oc_platform_view' %}is-active{% endif %}">
+    <a href="{{ path('oc_platform_view',{'id': advert.id}) }}">{{ advert.title }}</a>
+  </li>
+{% endblock %}
+
+{% block ocplatform_body %}
+  <!-- START ARTICLE -->
+  {{ include("OCPlatformBundle:Components:article.html.twig") }}
+<!-- END ARTICLE -->
+{% endblock %}

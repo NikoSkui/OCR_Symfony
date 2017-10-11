@@ -1,0 +1,45 @@
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="/css/article.css">{% endblock %}
+
+{% block title %}Ajouter une annonce - {{ parent() }}{% endblock %}
+
+{% block headerTitle %}Ajouter une nouvelle annonce{% endblock %}
+{% block headerSubtitle %}{% endblock %}
+
+{% block breadcrumbLien %}
+  {{ parent() }}
+  <li class="is-active">
+    <a href="#">Ajouter</a>
+  </li>
+{% endblock %}
+
+{% block ocplatform_body %}
+
+  <section class="article">
+      <section class="hero is-danger is-bold is-small promo-block">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              <i class="fa fa-bell-o"></i> 
+              Ajouter une annonce
+            </h1>
+            <h2 class="subtitle">
+              Attention : cette annonce sera ajoutée directement sur la page d'accueil après validation du formulaire.
+            </h2>
+          </div>
+        </div>
+      </section>
+      {{ include("OCPlatformBundle:Components:form.html.twig") }}
+  </section>
+  <section class="article">
+    <p>
+      <a href="{{ path('oc_platform_home') }}" class="button is-primary title is-4">
+        <span class="icon"><i class="fa fa-chevron-left"></i></span>
+        <span>Retour à la liste des annonces</span>
+      </a>
+    </p>
+  </section>
+  
+{% endblock %}

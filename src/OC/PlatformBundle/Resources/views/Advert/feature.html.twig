@@ -1,0 +1,7 @@
+<div class="columns features">
+  {% for advert in listAdverts %}
+    <div class="column is-4" style="display:flex;">
+      {{ include("OCPlatformBundle:Components:card.html.twig") }}
+    </div>
+  {% endfor %}
+</div>

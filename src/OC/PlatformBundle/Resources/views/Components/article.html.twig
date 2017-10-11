@@ -1,0 +1,32 @@
+<div class="card article">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-center">
+          <img src="/img/logo/logo-bgw.png" class="author-image" alt="Placeholder image">
+      </div>
+      <div class="media-content has-text-centered">
+        <p class="title article-title">{{ advert.title }}</p>
+        <p class="subtitle is-6 article-subtitle">
+          <a href="#">@{{ advert.author }}</a> le {{ advert.date|date('d F Y') }}
+        </p>
+      </div>
+    </div>
+    <div class="content article-body">
+      {{ advert.content|raw }}
+    </div>
+  </div>
+  <footer class="card-footer title is-5 ">
+    <a href="{{ path('oc_platform_home') }}" class="card-footer-item has-text-primary">
+      <span class="icon"><i class="fa fa-angle-left"></i></span>
+      <span>Retour à la liste</span>
+    </a>
+    <a href="{{ path('oc_platform_edit', {'id': advert.id}) }}" class="card-footer-item has-text-info">
+      <span class="icon"><i class="fa fa-edit"></i></span>
+      <span>Modifier l'annonce</span>
+    </a>
+    <a href="{{ path('oc_platform_delete', {'id': advert.id}) }}" class="card-footer-item has-text-danger">
+      <span class="icon"><i class="fa fa-times" ></i></span>
+      <span>Supprimer l'annonce</span>
+    </a>
+  </footer>
+</div>

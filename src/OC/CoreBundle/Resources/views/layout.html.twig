@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}OC Plateforme{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bulma depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="/css/header.css">
+  {% endblock %}
+</head>
+
+<body>
+
+  {# Header #}
+  <section class="hero is-primary is-medium">
+    <div class="hero-head">
+      {% include("OCCoreBundle:Partials:navbar.html.twig") %}
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">{% block headerTitle %} Ma plateforme d'annonces {% endblock %}</h1>
+        <h2 class="subtitle">
+          {% block headerSubtitle %}Ce projet est propulsé par Symfony, et construit grâce au MOOC OpenClassrooms et SensioLabs.{% endblock %}
+        </h2>
+        {% block headerCallToAction %}{% endblock %}
+      </div>
+    </div>
+  </section>
+
+
+  {% for label, messages in app.flashes %}
+    <div class="box cta tile is-vertical is-centered">
+      {% for message in messages %}
+        <p class="{% if loop.length == 1 %}has-text-centered{% else %}column is-half is-offset-one-quarter{% endif %} ">
+          <span class="tag is-{{label}}">{{label | title}}</span> {{message}}
+        </p>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  {% block breadcrumb %}{% endblock %}
+  {# Main #}
+  <section class="container">
+    {% block body %}
+    {% endblock %}
+  </section>
+
+  {# Footer #}
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Projet <strong>Symfony</strong> par <a href="#">Niko</a> © {{ 'now'|date('Y') }}.
+        </p>
+        <p>
+          <a class="icon" href="#">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>

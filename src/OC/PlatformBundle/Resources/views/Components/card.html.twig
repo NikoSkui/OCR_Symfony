@@ -1,0 +1,14 @@
+<div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+  <div class="card-image has-text-centered">
+      <i class="fa fa-{% if advert.icon is defined %}{{advert.icon}}{% else %}handshake-o{% endif %}"></i>
+  </div>
+  <div class="card-content" style="display:flex;flex:auto;">
+    <div class="content" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <h4>{{ advert.title }}</h4>
+      <p style="flex-grow:2">
+        {{advert.content|striptags|length > 250 ? advert.content|striptags|slice(0, 251)|split(' ')|slice(0, -1)|join(' ') ~ '…': advert.content|striptags  }}
+      </p>
+      <p><a href="{{ path('oc_platform_view', {'id': advert.id}) }}">Plus de détail</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/index.html.twig #}
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block title %}Accueil - {{ parent() }}{% endblock %}
+
+{% block headerTitle %}Toute les annonces{% endblock %}
+
+{% block headerSubtitle %}Découvrez l'ensemble des annonces de ma toute nouvelle plateforme créée spécialement pour les Web Lovers{% endblock %}
+
+{% block ocplatform_body %}
+
+  <div class="columns is-multiline" >
+    {% for advert in listAdverts %}
+    <div class="column is-half" style="display:flex;">
+      {{ include("OCPlatformBundle:Components:card.html.twig") }}
+    </div>
+    {% else %}
+      <p>Pas (encore !) d'annonces</p>
+    {% endfor %}
+  </div>
+  
+{% endblock %}

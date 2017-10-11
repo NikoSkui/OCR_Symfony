@@ -1,0 +1,23 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/index.html.twig #}
+
+{% extends "OCCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+{% block headerCallToAction %}
+  <p>
+    <a class="button is-primary" href="https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony2">
+      <span>Participer au MOOC</span>
+      <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+    </a>
+  </p>
+{% endblock %}
+
+{% block body %}
+  <div class="intro column is-8 is-offset-2">
+    <h2 class="title">Découvrez nos toutes dernières annonces !</h2><br>
+    <p class="subtitle">Les annonces sont régulièrement mises à jour pour une recherche efficace. Chacune d’elle est lue et contrôlée pour vous assurer un service irréprochable.</p>
+  </div>
+  {{ render(controller("OCPlatformBundle:Advert:feature", {'limit': 3})) }}
+{% endblock %}
