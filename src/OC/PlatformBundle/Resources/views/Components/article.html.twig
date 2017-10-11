@@ -7,7 +7,7 @@
       <div class="media-content has-text-centered">
         <p class="title article-title">{{ advert.title }}</p>
         <p class="subtitle is-6 article-subtitle">
-          <a href="#">@{{ advert.author }}</a> le {{ advert.date|date('d F Y') }}
+          <a href="#">@{{ advert.author }}</a> le {{ advert.date| localizeddate('long', 'none') }}
         </p>
       </div>
     </div>
