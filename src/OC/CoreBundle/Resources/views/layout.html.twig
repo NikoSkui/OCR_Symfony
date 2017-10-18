@@ -18,10 +18,19 @@
 <body>
 
   {# Header #}
-  <section class="hero is-primary is-medium">
-    <div class="hero-head">
-      {% include("OCCoreBundle:Partials:navbar.html.twig") %}
-    </div>
+  {% include("OCCoreBundle:Partials:navbar.html.twig") %}
+  <section class="hero is-primary is-medium" 
+           {% if (advert.author.image.url is defined) %}
+              style="background:url('{{advert.author.image.url}}');
+                     background-size:cover;
+                     min-height:416px;
+                     " 
+              {# style="background:url('https://picsum.photos/1920/500?image=7');background-size:cover;" #}
+           {% endif %}
+           {% if (advert.author.image.alt is defined) %}
+            title="{{advert.author.image.alt}}"
+           {% endif %}
+  >
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">{% block headerTitle %} Ma plateforme d'annonces {% endblock %}</h1>
@@ -46,7 +55,7 @@
 
   {% block breadcrumb %}{% endblock %}
   {# Main #}
-  <section class="container">
+  <section class="section">
     {% block body %}
     {% endblock %}
   </section>

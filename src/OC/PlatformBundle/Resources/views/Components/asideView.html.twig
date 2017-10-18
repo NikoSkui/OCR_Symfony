@@ -1,0 +1,58 @@
+<!-- START RESUME -->  
+<div class="box cta">
+  <p class="menu-label">Résumé</p>
+  <!-- START SALARY -->  
+    <ul class="menu-list">
+      <li>Salaire : <strong class="has-text-info">{{advert.salary.name}}</strong></li>
+    </ul>
+  <!-- END SALARY -->
+  <!-- START SKILL -->  
+  {% if listAdvertSkills|length > 0 %}
+    <ul class="menu-list">
+      <li>Technologies</li>
+      <ul class="tags">
+        {% for advertSkill in listAdvertSkills %}
+          <li class="tag is-dark">{{ advertSkill.skill.name }}</li> 
+        {% endfor %}
+      </ul>
+    </ul>
+  {% endif %}
+  <!-- END SKILL -->
+</div>
+<!-- END RESUME -->
+
+<!-- START ABOUT -->  
+<div class="box cta">
+  <p class="menu-label">A propos</p>
+  <!-- START AUTHOR -->  
+    <ul class="menu-list">
+      <li><img src="{{advert.author.image.url}}" alt="{{advert.author.image.alt}}"></li>
+      <li><p class="has-text-centered">{{advert.author.description}}</p></li>
+    </ul>
+  <!-- END AUTHOR -->
+</div>
+<!-- END ABOUT --> 
+ 
+<!-- START ACTION -->  
+<div class="box cta">
+  <p class="menu-label">Actions</p>
+  <!-- START AUTHOR -->  
+    <ul class="menu-list">
+      <li>
+        <a href="{{ path('oc_platform_edit', {'id': advert.id}) }}" 
+          class="card-footer-item has-text-info">
+          <span class="icon"><i class="fa fa-edit"></i></span>
+          <span>Modifier l'annonce</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ path('oc_platform_delete', {'id': advert.id}) }}" 
+          class="card-footer-item has-text-danger">
+          <span class="icon"><i class="fa fa-times"></i></span>
+          <span>Supprimer l'annonce</span>
+        </a>
+      </li>
+    </ul>
+  <!-- END AUTHOR -->
+</div>
+<!-- END ACTION -->

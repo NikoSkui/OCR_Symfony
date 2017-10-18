@@ -2,6 +2,7 @@ html,body {
   background: #EFF3F4;
   font-family: 'Open Sans', serif;
 }
+.navbar.is-primary,
 .hero.is-primary {
   background: #56ab2f;
   background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);
@@ -40,7 +41,9 @@ html,body {
   font-size: 16px;
   font-weight: 700;
 }
-.card {
+.card,
+.box,
+.panel {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
   margin-bottom: 2rem;
 }
@@ -56,17 +59,19 @@ html,body {
   justify-content: center;
   flex-direction: column;
 }
-.hero.is-primary a.navbar-item,
-.hero.is-primary .navbar-item a:not(.button) {
+.navbar.is-primary .navbar-end>.navbar-item,
+.navbar.is-primary .navbar-item a:not(.button) {
   color: rgba(255, 255, 255, 0.7);
 }
-.hero.is-primary a.navbar-item:hover, .hero.is-primary a.navbar-item.is-active,
-.hero.is-primary .navbar-link:hover,
-.hero.is-primary .navbar-link.is-active {
+.navbar.is-primary .navbar-end>a.navbar-item:hover,
+.navbar.is-primary .navbar-end>a.navbar-item.is-active,
+.navbar.is-primary .navbar-brand>a.navbar-item:hover,
+.navbar.is-primary .navbar-link:hover,
+.navbar.is-primary .navbar-link.is-active {
   background-color: transparent;
   color: #fff;
 }
-.hero.is-primary .navbar{
+.navbar.is-primary .navbar{
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .2);
   box-shadow: 0 1px 0 rgba(255, 255, 255, .2);
 }
@@ -76,4 +81,8 @@ a,
 }
 .menu-list a.is-active {
   background-color: #00d1b2;
+}
+
+.menu-list>li{
+  padding-bottom:5px;
 }

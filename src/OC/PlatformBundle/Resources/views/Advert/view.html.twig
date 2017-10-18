@@ -4,25 +4,65 @@
 
 {% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="/css/article.css">{% endblock %}
 {% block title %} {{ advert.title }} - {{ parent() }}{% endblock %}
-{% block headerTitle %}{{ advert.title }}{% endblock %}
-{% block headerSubtitle %}Et pourquoi pas vous ?{% endblock %}
-{% block headerCallToAction %}
-  <p>
-    <a class="button is-primary" href="#">
-      <span>Postulez !</span>
-    </a>
-  </p>
-{% endblock %}
-
-{% block breadcrumbLien %}
-  {{ parent() }}
-  <li class="{% if app.request.attributes.get('_route') == 'oc_platform_view' %}is-active{% endif %}">
-    <a href="{{ path('oc_platform_view',{'id': advert.id}) }}">{{ advert.title }}</a>
-  </li>
-{% endblock %}
+{% block headerTitle %}{% endblock %}
+{% block headerSubtitle %}{% endblock %}
+{% block headerCallToAction %}{% endblock %}
 
 {% block ocplatform_body %}
-  <!-- START ARTICLE -->
-  {{ include("OCPlatformBundle:Components:article.html.twig") }}
-<!-- END ARTICLE -->
+  <div class="container">
+    <div class="box cta" style="margin-top:-150px;">
+      <article class="media">
+        <div class="media-left">
+            <span class="icon is-large"><i class="fa fa-star-o fa-2x"></i></span>
+        </div>
+        <div class="media-content">
+          <h1><strong class="title">{{ advert.title }}</strong></h1>
+          <h2 class="subtitle is-6 has-text-info">
+            {{advertContract.contract.name}}
+            <span class="has-text-grey-light is-size-3">.</span> 
+            {{advert.author.address.city}}
+          </h2>
+          <div class="content">
+            <p>Partager cette annonce</p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-facebook"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-twitter"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-linkedin"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div class="media-right" style="align-self:center;">
+          <p>
+            <a class="button is-large is-link" href="#">
+              <strong>Je souhaite postuler</strong>
+            </a>
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="columns">
+      <aside class="column is-one-third">
+        <!-- START ASIDE -->
+        {{ include("OCPlatformBundle:Components:asideView.html.twig") }}
+        <!-- END ASIDE -->
+      </aside>
+      <div class="column">
+        <!-- START ANNONCE -->
+        {{ include("OCPlatformBundle:Components:annonce.html.twig") }}
+        <!-- END ANNONCE -->
+        <!-- START CANDIDATURE -->
+        {{ include("OCPlatformBundle:Components:application.html.twig") }}
+        <!-- END CANDIDATURE -->
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

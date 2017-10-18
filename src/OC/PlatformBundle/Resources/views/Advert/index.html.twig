@@ -9,15 +9,54 @@
 {% block headerSubtitle %}Découvrez l'ensemble des annonces de ma toute nouvelle plateforme créée spécialement pour les Web Lovers{% endblock %}
 
 {% block ocplatform_body %}
+<div class="container">
 
-  <div class="columns is-multiline" >
-    {% for advert in listAdverts %}
-    <div class="column is-half" style="display:flex;">
-      {{ include("OCPlatformBundle:Components:card.html.twig") }}
+  <div class="box cta" style="padding:0;">
+    <div class="tabs is-fullwidth is-toggle">
+      <ul>
+        {% for name,category in listCategories %}
+        <li><a style="padding-top:1em;padding-bottom:1em;">{{name}}</a></li>
+        {% endfor %}
+      </ul>
     </div>
-    {% else %}
-      <p>Pas (encore !) d'annonces</p>
-    {% endfor %}
+
   </div>
-  
+
+  <div class="columns">
+    <aside class="menu column is-one-quarter">
+      <p class="menu-label">Les annonces</p>
+      <ul class="menu-list">
+        <li>
+          <a class="{% if app.request.attributes.get('_route') == 'oc_platform_home' %}is-active{% endif %}"  
+              href="{{ path('oc_platform_home') }}">Toute les annonces
+          </a>
+        </li>
+        <li>
+          <a class="{% if app.request.attributes.get('_route') == 'oc_platform_add' %}is-active{% endif %}"  
+              href="{{ path('oc_platform_add') }}">Ajouter une annonce
+          </a>
+        </li>
+      </ul>
+      <p class="menu-label">Dernières annonces</p>
+      {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}
+    </aside>
+
+    <div class="column">
+      <div class="columns is-multiline" >
+        {% for k,advert in listAdverts %}
+        <div class="column is-half" style="display:flex;">
+          {{ include("OCPlatformBundle:Components:card.html.twig") }}
+        </div>
+        {% else %}
+          <p>Pas (encore !) d'annonces</p>
+        {% endfor %}
+      </div>
+      <div class="hero">
+        {{ include("OCPlatformBundle:Components:pagination.html.twig") }}
+      </div>
+    </div>
+  </div>
+
+
+</div>
 {% endblock %}

@@ -19,7 +19,7 @@
   display: block;
   margin-bottom: 1rem;
 }
-.media-content {
+.articles .media-content {
   margin-top: 3rem;
 }
 .article, .promo-block {
@@ -42,6 +42,6 @@ div.column.is-8:first-child {
   line-height: 1.4;
   margin: 0 6rem;
 }
-.promo-block .container {
+/* .promo-block .container {
   margin: 1rem 5rem;
-}
+} */

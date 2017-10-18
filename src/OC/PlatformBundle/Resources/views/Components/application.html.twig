@@ -1,0 +1,15 @@
+{% for application in advert.applications %}
+<section class="hero is-primary is-small promo-block">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <i class="fa fa-bell-o"></i> 
+          {{application.author}}
+      </h1>
+      <h2 class="subtitle">
+            {{application.content}}
+      </h2>
+    </div>
+  </div>
+</section>
+{% endfor %}

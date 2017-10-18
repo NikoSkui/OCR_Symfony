@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-content">
+    {% for description in listDescriptions %}
+      <div class="media">
+        <div class="media-content">
+          <h3 class="title has-text-primary is-5">{{description.name}}</h3>
+          <div class="content">{{ description.content|raw }}</div>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="columns is-centered">
+      <div class="column is-narrow">
+        <a class="button is-large is-link" href="#">
+          <strong>Je souhaite postuler à cette offre</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
