@@ -1,7 +1,10 @@
 <?php
 
+// Commande à lancer pour le serveur interne de PHP
+// php -S localhost:8000 -d display_errors=1 -t web server.php
+
 // Choix de l'environnement 'dev' ou 'prod'
-$environment = 'dev';
+$environment = 'prod';
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Si le fichier existe, on ne passe pas par le router

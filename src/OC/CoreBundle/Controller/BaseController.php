@@ -15,8 +15,16 @@ class BaseController extends Controller
 
   public function contactAction(Request $request)
   {
-    // Pour l'instant, on ne fait qu'enrigistrer un message flash et rediriger vers l'accueil
-      $request->getSession()->getFlashBag()->add('info', 'La page de contact n’est pas encore disponible, merci de revenir plus tard.');
-      return $this->redirectToRoute('oc_core_home');
+    // On récupère la session
+    $session = $request->getSession();
+
+    // On enregistrer un message flash
+    $session->getFlashBag()->add(
+      'info',
+      'La page de contact n’est pas encore disponible, merci de revenir plus tard.'
+    );
+    
+    // On redirige vers l'accueil
+    return $this->redirectToRoute('oc_core_home');
   }
 }
